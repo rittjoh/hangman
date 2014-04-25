@@ -1,0 +1,111 @@
+<head>
+  <title>Hangman</title>
+</head>
+
+<body>
+  {{> header}}
+  {{>body}}
+</body>
+
+<template name="header">
+	<header>
+		<hgroup>
+			<h1>
+				{{title}}
+			</h1>
+			<h2>
+				{{tagline}}
+			</h2>
+		</hgroup>
+	</header>
+</template>
+
+<template name="body">
+	{{> gallows}}
+	{{> puzzle}}
+	{{> players}}
+
+	{{> newPlayer}}
+	{{> newLetter}}
+	{{> newPhrase}}
+</template>
+
+<template name="gallows">
+	<div id="gallow">
+	<pre>
+     _______
+     |/         |
+     |       
+     |      
+     |       
+     |      
+     |
+________
+	 </pre>
+	</div>
+</template>
+
+<template name="puzzle">
+	<div id="phrase">
+		
+	</div>
+</template>
+
+<template name="players">
+	<table>
+		<thead>
+			<tr>
+				<td class="dino">
+					Name
+				</td>
+				<td class="votes">
+					Letters
+				</td>
+			</tr>
+		</thead>
+		<tbody>  
+			{{#each players}}
+				{{> player}}
+			{{else}}
+				<tr>
+					<td colspan="2" align="right">
+						No Players
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</template>
+
+<template name="player">
+	<tr class="">
+		<td class="dino">
+			{{name}}
+		</td>
+		<td>
+			{{letters}}
+		</td>
+	</tr>
+</template>
+
+<template name="newPlayer">
+	<div id="playerAdd">
+		<input id="playerToAdd" placeholder="Name">
+		<input id="addPlayer" type="button" value="Add Me">
+	</div>
+</template>
+
+<template name="newLetter">
+	<div id="letterAdd">
+		<input id="letterToAdd" maxlength="1" placeholder="?">
+		<input id="addLetter" type="button" value="Guess Letter!">
+	</div>
+</template>
+
+<template name="newPhrase">
+	<div id="phraseAdd">
+		<input id="PhraseToAdd" placeholder="Phrase">
+		<input id="PhraseDesc" placeholder="Description">
+		<input id="addPhrase" type="button" value="Add Puzzle!">
+	</div>
+</template>
